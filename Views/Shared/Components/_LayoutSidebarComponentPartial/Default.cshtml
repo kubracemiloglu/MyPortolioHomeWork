@@ -1,0 +1,20 @@
+@{ var currentController = ViewContext.RouteData.Values["controller"]?.ToString(); }
+<aside class="sidebar"><div class="scrollbar-inner sidebar-wrapper">
+<div class="user"><div class="info"><a href="/Account/Profile"><span>@User.Identity?.Name<span class="user-level">Yönetici</span></span></a></div></div>
+<ul class="nav">
+<li class="nav-item"><a href="/Default/Index"><i class="la la-home"></i><p>Siteye Git</p></a></li>
+<li class="nav-item @(currentController == "Statistic" ? "active" : "")"><a href="/Statistic/Index"><i class="la la-dashboard"></i><p>Genel Bakış</p></a></li>
+<li class="nav-item @(currentController == "About" ? "active" : "")"><a href="/About/Index"><i class="la la-user"></i><p>Hakkımda</p></a></li>
+<li class="nav-item @(currentController == "Feature" ? "active" : "")"><a href="/Feature/Index"><i class="la la-star"></i><p>Öne Çıkan Alan</p></a></li>
+<li class="nav-item @(currentController == "Contact" ? "active" : "")"><a href="/Contact/Index"><i class="la la-phone"></i><p>İletişim Bilgileri</p></a></li>
+<li class="nav-item @(currentController == "Portfolio" ? "active" : "")"><a href="/Portfolio/Index"><i class="la la-briefcase"></i><p>Portfolyo</p></a></li>
+<li class="nav-item @(currentController == "Skill" ? "active" : "")"><a href="/Skill/Index"><i class="la la-code"></i><p>Yeteneklerim</p></a></li>
+<li class="nav-item @(currentController == "Testimonial" ? "active" : "")"><a href="/Testimonial/Index"><i class="la la-comment"></i><p>Referanslarım</p></a></li>
+<li class="nav-item @(currentController == "SocialMedia" ? "active" : "")"><a href="/SocialMedia/Index"><i class="la la-share"></i><p>Sosyal Medya</p></a></li>
+<li class="nav-item @(currentController == "Experience" ? "active" : "")"><a href="/Experience/ExperienceList"><i class="la la-building"></i><p>Deneyimler</p></a></li>
+<li class="nav-item @(currentController == "ToDoList" ? "active" : "")"><a href="/ToDoList/Index"><i class="la la-check"></i><p>Yapılacaklar</p></a></li>
+<li class="nav-item @(currentController == "Message" ? "active" : "")"><a href="/Message/Inbox"><i class="la la-envelope"></i><p>Gelen Kutusu</p></a></li>
+<li class="nav-item @(currentController == "Search" ? "active" : "")"><a href="/Search/Index"><i class="la la-search"></i><p>Arama</p></a></li>
+<li class="nav-item @(currentController == "Account" ? "active" : "")"><a href="/Account/Profile"><i class="la la-user"></i><p>Profilim</p></a></li>
+<li class="nav-item"><form asp-controller="Account" asp-action="Logout" method="post"><button class="admin-nav-button"><i class="la la-sign-out"></i> Çıkış Yap</button></form></li>
+</ul></div></aside>

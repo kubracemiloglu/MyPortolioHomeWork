@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+@await Component.InvokeAsync("_LayoutHeadComponentPartial")
+<body>
+	<div class="wrapper">
+		@await Component.InvokeAsync("_LayoutNavbarComponentPartial")
+		@await Component.InvokeAsync("_LayoutSidebarComponentPartial")
+		
+		<div class="main-panel">
+            @if (TempData["Success"] is string success)
+            {
+                <div class="alert alert-success admin-feedback" role="status">@success</div>
+            }
+			@RenderBody()
+		</div>
+	</div>
+@await Component.InvokeAsync("_LayoutScriptComponenetPartial")
+<script src="~/js/admin.js" asp-append-version="true"></script>
+</body>
+</html>

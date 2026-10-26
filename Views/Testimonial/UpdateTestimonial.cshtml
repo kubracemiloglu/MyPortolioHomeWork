@@ -1,0 +1,37 @@
+@model Testimonial
+@{
+    ViewData["Title"] = "Referanslarım Güncelle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<div class="content"><div class="container-fluid"><h1 class="page-title">@ViewData["Title"]</h1>
+<div class="card"><div class="card-body">
+<form asp-action="UpdateTestimonial" method="post">
+<input type="hidden" asp-for="TestimonialId" />
+<div asp-validation-summary="All" class="text-danger" role="alert"></div>
+<div class="form-group">
+<label asp-for="NameSurname">Ad soyad</label>
+<input asp-for="NameSurname" class="form-control" type="text" />
+
+
+<span asp-validation-for="NameSurname" class="text-danger"></span></div>
+<div class="form-group">
+<label asp-for="Title">Unvan</label>
+<input asp-for="Title" class="form-control" type="text" />
+
+
+<span asp-validation-for="Title" class="text-danger"></span></div>
+<div class="form-group">
+<label asp-for="Description">Yorum</label>
+<textarea asp-for="Description" rows="5" class="form-control"></textarea>
+
+
+<span asp-validation-for="Description" class="text-danger"></span></div>
+<div class="form-group">
+<label asp-for="ImageUrl">Görsel yolu (isteğe bağlı)</label>
+<input asp-for="ImageUrl" class="form-control" type="text" />
+<small class="form-text text-muted">Örnek: /images/proje.png veya https://... Yerel görseli wwwroot içine koyabilirsin.</small>
+
+<span asp-validation-for="ImageUrl" class="text-danger"></span></div>
+<button class="btn btn-primary">Kaydet</button>
+<a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form></div></div></div></div>

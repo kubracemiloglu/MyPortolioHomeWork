@@ -1,0 +1,16 @@
+@model List<MyPortolioHomeWork.DAL.Entities.Skill>
+<div class="col-six tab-full right">
+    <h3>Öne Çıkan Yetkinlikler</h3>
+    <ul class="skill-bars">
+        @foreach (var item in Model)
+        {
+            <li>
+                @if (item.Value > 0)
+                {
+                    <div class="progress" style="width: @(item.Value)%"><span>@item.Value%</span></div>
+                }
+                <strong>@item.Title</strong>
+            </li>
+        }
+    </ul>
+</div>

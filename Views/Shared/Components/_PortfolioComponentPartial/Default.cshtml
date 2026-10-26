@@ -1,0 +1,43 @@
+@model List<MyPortolioHomeWork.DAL.Entities.Portfolio>
+<section id="works" class="s-works target-section">
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h3>Portfolyo</h3>
+            <h1>Geliştirdiğim Projeler</h1>
+            <p class="lead">Web uygulamalarından masaüstü otomasyonlarına, üzerinde çalıştığım projeler.</p>
+        </div>
+    </div>
+    <div class="row masonry-wrap">
+        <div class="masonry">
+            @foreach (var item in Model)
+            {
+                <div class="masonry__brick">
+                    <div class="item-folio @(string.IsNullOrWhiteSpace(item.ImageUrl) ? "portfolio-text-card" : "")">
+                        @if (!string.IsNullOrWhiteSpace(item.ImageUrl))
+                        {
+                            <div class="item-folio__thumb">
+                                <a href="@Url.Content(item.ImageUrl)" class="thumb-link" data-size="1440x900" title="@item.Title görselini aç">
+                                    <img src="@Url.Content(item.ImageUrl)" alt="@item.Title ekran görüntüsü">
+                                    <span class="shadow-overlay"></span>
+                                </a>
+                            </div>
+                        }
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">@item.Title</h3>
+                            <p class="item-folio__cat">@item.SubTitle</p>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(item.Url))
+                        {
+                            <a href="@item.Url" class="item-folio__project-link" title="Projeyi GitHub üzerinde incele" target="_blank" rel="noopener noreferrer">
+                                <i class="im im-link"></i>
+                            </a>
+                        }
+                        <div class="portfolio-description">
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

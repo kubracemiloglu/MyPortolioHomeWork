@@ -1,0 +1,14 @@
+@model List<MyPortolioHomeWork.Models.SearchResult>
+@{ ViewData["Title"] = "Arama"; Layout = "~/Views/Layout/Index.cshtml"; }
+<div class="content"><div class="container-fluid"><h1 class="page-title">Arama</h1>
+<div class="card"><div class="card-body">
+<form asp-action="Index" method="get" class="form-inline mb-3"><label for="searchQuery" class="sr-only">Aranacak kelime</label><input id="searchQuery" name="q" value="@ViewBag.Query" maxlength="200" class="form-control mr-2" placeholder="Tüm bölümlerde ara"><button class="btn btn-primary">Ara</button></form>
+@if (string.IsNullOrWhiteSpace((string?)ViewBag.Query)) { <p>Aramak istediğin kelimeyi yaz.</p> }
+else if (Model.Count == 0) { <p role="status">Aramana uygun kayıt bulunamadı.</p> }
+else {
+<p>@Model.Count sonuç gösteriliyor. Her bölümden en fazla 20 kayıt listelenir.</p>
+<ul class="list-group">
+@foreach (var item in Model) { <li class="list-group-item"><small class="text-muted">@item.Section</small><br><a href="@item.Url">@item.Title</a></li> }
+</ul>
+}
+</div></div></div></div>

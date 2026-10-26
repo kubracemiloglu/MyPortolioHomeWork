@@ -1,0 +1,30 @@
+@model List<ToDoList>
+@{
+    ViewData["Title"] = "Yapılacaklar";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<div class="content"><div class="container-fluid">
+<h1 class="page-title">Yapılacaklar</h1>
+<div class="card"><div class="card-header"><h2 class="card-title">Yapılacaklar Yönetimi</h2></div>
+<div class="card-body">
+<p>Kayıtları buradan ekleyebilir ve düzenleyebilirsin.</p>
+
+<a asp-action="CreateToDoList" class="btn btn-primary mb-3">Yeni Kayıt Ekle</a>
+
+@if (Model.Count == 0) { <div class="alert alert-info">Henüz kayıt eklenmemiş.</div> }
+else {
+<div class="table-responsive"><table class="table mt-3"><thead><tr><th>#</th><th>İçerik</th><th>İkon sınıfı</th><th>Tarih</th><th>Durum</th><th>İşlemler</th></tr></thead><tbody>
+@foreach (var item in Model) {
+<tr><td>@item.ToDoListId</td><td>@item.Title</td><td>@item.ImageUrl</td><td>@item.Date.ToString("dd.MM.yyyy")</td>
+<td>
+<form asp-action="@(item.Status ? "ChangeToDoListStatusToFalse" : "ChangeToDoListStatusToTrue")" asp-route-id="@item.ToDoListId" method="post" class="d-inline">
+<button class="btn btn-sm @(item.Status ? "btn-success" : "btn-warning")">@(item.Status ? "Tamamlandı · Geri al" : "Tamamla")</button></form></td>
+<td class="admin-actions">
+<a asp-action="UpdateToDoList" asp-route-id="@item.ToDoListId" class="btn btn-sm btn-success">Güncelle</a>
+<form asp-action="DeleteToDoList" asp-route-id="@item.ToDoListId" method="post" class="d-inline" data-confirm-delete>
+<button class="btn btn-sm btn-danger">Sil</button></form>
+</td></tr>
+}
+</tbody></table></div>
+}
+</div></div></div></div>

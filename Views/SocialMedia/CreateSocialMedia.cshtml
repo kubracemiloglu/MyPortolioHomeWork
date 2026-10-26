@@ -1,0 +1,31 @@
+@model SocialMedia
+@{
+    ViewData["Title"] = "Sosyal Medya Ekle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<div class="content"><div class="container-fluid"><h1 class="page-title">@ViewData["Title"]</h1>
+<div class="card"><div class="card-body">
+<form asp-action="CreateSocialMedia" method="post">
+
+<div asp-validation-summary="All" class="text-danger" role="alert"></div>
+<div class="form-group">
+<label asp-for="Title">Platform</label>
+<input asp-for="Title" class="form-control" type="text" />
+
+
+<span asp-validation-for="Title" class="text-danger"></span></div>
+<div class="form-group">
+<label asp-for="Url">Profil bağlantısı</label>
+<input asp-for="Url" class="form-control" type="text" />
+
+
+<span asp-validation-for="Url" class="text-danger"></span></div>
+<div class="form-group">
+<label asp-for="Icon">İkon sınıfı</label>
+<input asp-for="Icon" class="form-control" type="text" />
+
+<small class="form-text text-muted">Örnek: la la-check veya fa fa-github</small>
+<span asp-validation-for="Icon" class="text-danger"></span></div>
+<button class="btn btn-primary">Kaydet</button>
+<a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form></div></div></div></div>

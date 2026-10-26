@@ -1,0 +1,22 @@
+@{ ViewData["Title"] = "Genel Bakış"; Layout = "~/Views/Layout/Index.cshtml";
+    var cards = new[] {
+        ("Yetenek", (int)ViewBag.SkillCount, "/Skill/Index", "primary"),
+        ("Toplam mesaj", (int)ViewBag.MessageCount, "/Message/Inbox", "success"),
+        ("Okunmayan mesaj", (int)ViewBag.UnreadCount, "/Message/Inbox", "danger"),
+        ("Okunan mesaj", (int)ViewBag.ReadCount, "/Message/Inbox", "info"),
+        ("Deneyim", (int)ViewBag.ExperienceCount, "/Experience/ExperienceList", "primary"),
+        ("Proje", (int)ViewBag.PortfolioCount, "/Portfolio/Index", "success"),
+        ("Referans", (int)ViewBag.TestimonialCount, "/Testimonial/Index", "info"),
+        ("Sosyal medya", (int)ViewBag.SocialMediaCount, "/SocialMedia/Index", "primary"),
+        ("Bekleyen iş", (int)ViewBag.PendingCount, "/ToDoList/Index", "warning"),
+        ("Tamamlanan iş", (int)ViewBag.CompletedCount, "/ToDoList/Index", "success"),
+        ("Hakkımda kaydı", (int)ViewBag.AboutCount, "/About/Index", "info"),
+        ("İletişim kaydı", (int)ViewBag.ContactCount, "/Contact/Index", "primary")
+    };
+}
+<div class="content dashboard-content"><div class="container-fluid">
+<div class="dashboard-intro"><div><span class="section-eyebrow">ÇALIŞMA ALANIN</span><h1 class="page-title">Genel Bakış</h1>
+<p>İçeriklerin, mesajların ve çalışmaların tek bir yerde.</p></div><a href="/Default/Index" class="btn btn-outline-primary">Portfolyoyu Gör <span aria-hidden="true">↗</span></a></div>
+<div class="row">@foreach (var card in cards) {
+<div class="col-sm-6 col-lg-3"><a href="@card.Item3" class="card card-stats card-@card.Item4"><div class="card-body"><div class="stat-topline"><p class="card-category">@card.Item1</p><span class="stat-arrow" aria-hidden="true">↗</span></div><h2 class="card-title">@card.Item2</h2><span class="stat-link">Kayıtları incele</span></div></a></div>
+}</div></div></div>

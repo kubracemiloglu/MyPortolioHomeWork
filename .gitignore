@@ -1,0 +1,39 @@
+# Visual Studio and build outputs
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+TestResults/
+
+# Local backups and development checks
+.development/
+.course-completion/
+GitHub-Hazir.zip
+GitHub-Hazir/
+*.log
+*.bak
+*.mdf
+*.ldf
+*.db
+*.db-shm
+*.db-wal
+
+# Local settings and credentials
+appsettings.Local.json
+appsettings.*.Local.json
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Operating system and package caches
+.DS_Store
+Thumbs.db
+node_modules/
+.npm-cache/

@@ -1,0 +1,24 @@
+@model List<ToDoList>
+<header class="main-header">
+<div class="logo-header"><a href="/Statistic/Index" class="logo">Admin Paneli</a>
+<button class="navbar-toggler sidenav-toggler ml-auto" type="button" aria-label="Menüyü aç"><span class="navbar-toggler-icon"></span></button>
+<button class="topbar-toggler more" aria-label="Üst menüyü aç"><i class="la la-ellipsis-v"></i></button></div>
+<nav class="navbar navbar-header navbar-expand-lg"><div class="container-fluid">
+<form asp-controller="Search" asp-action="Index" method="get" class="navbar-left navbar-form nav-search mr-md-3 admin-search">
+<label for="globalQuery" class="sr-only">Tüm bölümlerde ara</label><div class="input-group"><input id="globalQuery" name="q" type="search" maxlength="200" value="@ViewBag.Query" placeholder="Tüm bölümlerde ara..." class="form-control"><div class="input-group-append"><button class="btn btn-link" aria-label="Ara"><i class="la la-search"></i></button></div></div>
+</form>
+<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+<li class="nav-item"><a href="/Message/Inbox" class="nav-link" aria-label="Gelen kutusu"><i class="la la-envelope"></i><span class="notification">@ViewBag.unreadMessageCount</span></a></li>
+<li class="nav-item dropdown hidden-caret">
+<a class="nav-link dropdown-toggle" href="#" id="todoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Yapılacaklar"><i class="la la-bell"></i><span class="notification">@ViewBag.toDoListCount</span></a>
+<ul class="dropdown-menu notif-box" aria-labelledby="todoDropdown"><li><div class="dropdown-title">@ViewBag.toDoListCount bekleyen iş</div></li><li><div class="notif-center">
+@if (Model.Count == 0) { <p class="p-3">Bekleyen işin yok.</p> }
+@foreach (var item in Model) { <a href="/ToDoList/UpdateToDoList/@item.ToDoListId"><div class="notif-icon notif-success"><i class="@item.ImageUrl"></i></div><div class="notif-content"><span class="block">@item.Title</span><span class="time">@item.Date.ToString("dd.MM.yyyy")</span></div></a> }
+</div></li><li><a class="see-all" href="/ToDoList/Index">Tüm yapılacaklar</a></li></ul></li>
+<li class="nav-item dropdown">
+<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">@User.Identity?.Name</a>
+<div class="dropdown-menu dropdown-menu-right">
+<a class="dropdown-item" href="/Account/Profile">Profilim</a><a class="dropdown-item" href="/Account/ChangePassword">Şifre Değiştir</a>
+<a class="dropdown-item" href="/Default/Index">Siteye Git</a>
+<form asp-controller="Account" asp-action="Logout" method="post"><button class="dropdown-item">Çıkış Yap</button></form>
+</div></li></ul></div></nav></header>
